@@ -1,0 +1,102 @@
+{
+  "name": "AGMarket - Monitoreo e Ingesta de Evidencias Ecuador",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "node_schedule_trigger",
+      "name": "Disparador Diario (08:00 AM)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lista de fuentes registradas en Ecuador para monitoreo periódico\nreturn [\n  {\n    json: {\n      source_id: \"src_computrabajo_ec\",\n      url: \"https://ec.computrabajo.com/empleos-en-quito?q=sri\",\n      evidence_type: \"job_posting\"\n    }\n  },\n  {\n    json: {\n      source_id: \"src_multitrabajos_ec\",\n      url: \"https://www.multitrabajos.com/empleos-busqueda-inventario.html\",\n      evidence_type: \"job_posting\"\n    }\n  }\n];"
+      },
+      "id": "node_seed_sources",
+      "name": "Fuentes del Registry",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "node_fetch_source",
+      "name": "Fetch Contenido Publico",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8765/api/v1/ingest",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"source_id\": \"{{ $('Fuentes del Registry').item.json.source_id }}\",\n  \"url\": \"{{ $('Fuentes del Registry').item.json.url }}\",\n  \"content\": \"{{ $json.data }}\",\n  \"evidence_type\": \"{{ $('Fuentes del Registry').item.json.evidence_type }}\"\n}",
+        "options": {}
+      },
+      "id": "node_post_pipeline",
+      "name": "Enviar a Pipeline AGMarket",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "Disparador Diario (08:00 AM)": {
+      "main": [
+        [
+          {
+            "node": "Fuentes del Registry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fuentes del Registry": {
+      "main": [
+        [
+          {
+            "node": "Fetch Contenido Publico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Contenido Publico": {
+      "main": [
+        [
+          {
+            "node": "Enviar a Pipeline AGMarket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
