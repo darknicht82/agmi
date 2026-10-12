@@ -49,7 +49,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:8765/api/v1/ingest",
+        "url": "http://host.docker.internal:8765/api/v1/ingest",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"source_id\": \"{{ $('Fuentes del Registry').item.json.source_id }}\",\n  \"url\": \"{{ $('Fuentes del Registry').item.json.url }}\",\n  \"content\": \"{{ $json.data }}\",\n  \"evidence_type\": \"{{ $('Fuentes del Registry').item.json.evidence_type }}\"\n}",
