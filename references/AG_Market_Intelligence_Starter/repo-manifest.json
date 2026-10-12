@@ -1,0 +1,65 @@
+{
+  "project": "A&G Market Intelligence",
+  "repos": [
+    {
+      "name": "MarkItDown",
+      "url": "https://github.com/microsoft/markitdown",
+      "role": "document normalization",
+      "priority": "core"
+    },
+    {
+      "name": "Crawl4AI",
+      "url": "https://github.com/unclecode/crawl4ai",
+      "role": "JS-aware web crawling / Markdown",
+      "priority": "core"
+    },
+    {
+      "name": "Scrapy",
+      "url": "https://github.com/scrapy/scrapy",
+      "role": "structured/high-volume crawling",
+      "priority": "core"
+    },
+    {
+      "name": "Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "role": "adaptive scraping",
+      "priority": "optional"
+    },
+    {
+      "name": "Browser Use",
+      "url": "https://github.com/browser-use/browser-use",
+      "role": "interactive browser agents",
+      "priority": "optional"
+    },
+    {
+      "name": "Crawlee",
+      "url": "https://github.com/apify/crawlee",
+      "role": "Node/TS crawling",
+      "priority": "optional"
+    },
+    {
+      "name": "ScrapeGraphAI",
+      "url": "https://github.com/ScrapeGraphAI/Scrapegraph-ai",
+      "role": "AI-assisted scraping",
+      "priority": "optional"
+    },
+    {
+      "name": "Firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "role": "search/scrape context API",
+      "priority": "optional"
+    },
+    {
+      "name": "curl-impersonate",
+      "url": "https://github.com/lwthiker/curl-impersonate",
+      "role": "browser-like HTTP fingerprinting",
+      "priority": "optional / restricted"
+    },
+    {
+      "name": "scrcpy",
+      "url": "https://github.com/Genymobile/scrcpy",
+      "role": "Android device control",
+      "priority": "not MVP"
+    }
+  ]
+}

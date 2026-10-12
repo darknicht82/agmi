@@ -1,0 +1,165 @@
+{
+  "_nota": "Archivo OPERATIVO interno. No es documentación de producto. Ver docs/10_politica_nomenclatura.md. Nombres técnicos permitidos solo aquí y en manifiestos de dependencias.",
+  "project": "A&G Market Intelligence",
+  "version": "0.1.0",
+  "repos": [
+    {
+      "name": "MarkItDown",
+      "url": "https://github.com/microsoft/markitdown",
+      "role": "document normalization",
+      "priority": "core"
+    },
+    {
+      "name": "Crawl4AI",
+      "url": "https://github.com/unclecode/crawl4ai",
+      "role": "JS-aware web crawling / Markdown",
+      "priority": "core"
+    },
+    {
+      "name": "Scrapy",
+      "url": "https://github.com/scrapy/scrapy",
+      "role": "structured/high-volume crawling",
+      "priority": "core"
+    },
+    {
+      "name": "Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "role": "adaptive scraping",
+      "priority": "optional"
+    },
+    {
+      "name": "Browser Use",
+      "url": "https://github.com/browser-use/browser-use",
+      "role": "interactive browser agents",
+      "priority": "optional"
+    },
+    {
+      "name": "Crawlee",
+      "url": "https://github.com/apify/crawlee",
+      "role": "Node/TS crawling",
+      "priority": "optional"
+    },
+    {
+      "name": "ScrapeGraphAI",
+      "url": "https://github.com/ScrapeGraphAI/Scrapegraph-ai",
+      "role": "AI-assisted scraping",
+      "priority": "optional"
+    },
+    {
+      "name": "Firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "role": "search/scrape context API",
+      "priority": "optional"
+    },
+    {
+      "name": "curl-impersonate",
+      "url": "https://github.com/lwthiker/curl-impersonate",
+      "role": "browser-like HTTP fingerprinting",
+      "priority": "optional / restricted"
+    },
+    {
+      "name": "scrcpy",
+      "url": "https://github.com/Genymobile/scrcpy",
+      "role": "Android device control",
+      "priority": "not MVP"
+    }
+  ],
+  "mvp_stack": [
+    "httpx",
+    "Scrapy",
+    "Crawl4AI",
+    "MarkItDown",
+    "Pydantic",
+    "SQLAlchemy",
+    "PostgreSQL",
+    "pytest",
+    "Ollama"
+  ],
+  "regla": "No instalar los 10. MVP solo. El resto cuando una necesidad concreta lo justifique.",
+  "skills_watchlist": {
+    "_nota": "Catálogo de skills externas de agente. NADA INSTALADO. Solo backlog. Una skill es texto que reescribe el comportamiento del agente: superficie de inyección de instrucciones. Revisión obligatoria (contenido, permisos, telemetría, licencia, secretos) antes de tocar nada. Criterio de activación: necesidad concreta del pipeline de Pista A, no popularidad.",
+    "estado_global": "NO INSTALADO",
+    "criterio_activacion": "Necesidad concreta del pipeline de Pista A que el código determinista no resuelve igual de bien y con menos riesgo.",
+    "gate_de_seguridad": [
+      "Leer el contenido completo de la skill antes de instalar",
+      "Verificar permisos / acceso a red / pedidos de credenciales",
+      "Verificar telemetría y licencia",
+      "Comprobar que no exige servicios de pago ocultos",
+      "Comprobar actividad y procedencia del repositorio original"
+    ],
+    "evaluadas": [
+      {
+        "name": "last30days-skill",
+        "url": "https://github.com/mvanhorn/last30days-skill",
+        "role": "investigación de conversaciones/tendencias recientes",
+        "verdict": "candidato_condicional",
+        "activar_cuando": "Inicio de investigación manual de M1, y SOLO si produce URLs citables como evidencia.",
+        "riesgo": "Tendencias internacionales no son evidencia ecuatoriana. Regla de fuentes: relación verificable con Ecuador.",
+        "prioridad": "primero_si_algo"
+      },
+      {
+        "name": "obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "role": "flujo spec → plan → implement → test → review",
+        "verdict": "valor_bajo",
+        "activar_cuando": "No previsto. AGENTS.md + definición de hecho ya cubren la disciplina.",
+        "riesgo": "Capa de meta-proceso adicional que compite con nuestras reglas.",
+        "prioridad": "backlog"
+      },
+      {
+        "name": "coreyhaines31/marketingskills",
+        "url": "https://github.com/coreyhaines31/marketingskills",
+        "role": "CRO, copywriting, precios, lanzamiento",
+        "verdict": "util_despues",
+        "activar_cuando": "Semana 3 del ciclo de Pista A (ofertas y experimentos comerciales).",
+        "riesgo": "Plantillas genéricas de mercado anglo; adaptar a contexto Ecuador.",
+        "prioridad": "semana_3"
+      },
+      {
+        "name": "garrytan/gstack",
+        "url": "https://github.com/garrytan/gstack",
+        "role": "revisión de producto, QA, lanzamiento",
+        "verdict": "backlog",
+        "activar_cuando": "Solo si se demuestra que aporta sobre la disciplina ya instalada.",
+        "riesgo": "Solape con superpowers.",
+        "prioridad": "backlog"
+      },
+      {
+        "name": "nextlevelbuilder/ui-ux-pro-max-skill",
+        "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "role": "referencias de estilo/UI",
+        "verdict": "fuera_de_alcance",
+        "activar_cuando": "Fase 6+ si hay panel que justificar. No antes.",
+        "riesgo": "Dashboard prematuro — explícitamente fuera de alcance en docs/09.",
+        "prioridad": "no_mvp"
+      },
+      {
+        "name": "Leonxlnx/taste-skill",
+        "url": "https://github.com/Leonxlnx/taste-skill",
+        "role": "identidad visual / UI menos genérica",
+        "verdict": "fuera_de_alcance",
+        "activar_cuando": "Cuando exista oferta validada y producto que mostrar.",
+        "riesgo": "Marca/identidad antes de oferta validada — prohibido en docs/12.",
+        "prioridad": "no_mvp"
+      },
+      {
+        "name": "frontend-slides (zarazhangrui)",
+        "url": "https://github.com/zarazhangrui/frontend-slides",
+        "role": "presentaciones comerciales",
+        "verdict": "fuera_de_alcance",
+        "activar_cuando": "Cuando haya oportunidad validada que presentar.",
+        "riesgo": "pendiente de verificar procedencia exacta",
+        "prioridad": "no_mvp"
+      },
+      {
+        "name": "SIN-VERIFICAR: no-ai-slop / brag / claude-for-legal / caveman / awesome-claude-skills",
+        "url": null,
+        "role": "varios (antipatrones de escritura, vídeo, legal, tokens, catálogo)",
+        "verdict": "descartado_hasta_verificar",
+        "activar_cuando": "Solo tras localizar el repositorio original, licencia, actividad y permisos.",
+        "riesgo": "Enlaces incompletos en la fuente de la propuesta. No instalar a ciegas.",
+        "prioridad": "bloqueado"
+      }
+    ]
+  }
+}

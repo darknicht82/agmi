@@ -1,0 +1,65 @@
+# Entorno y secretos
+.env
+.env.local
+*.pem
+*.key
+
+# Backups (Ley — permanentes en disco, fuera de Git)
+.backups/
+
+# Datos operativos (solo semillas y fixtures versionados)
+data/raw/*
+data/processed/*
+data/evidence/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/evidence/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib60/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+
+# Herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Artefactos de exportación generados
+reports/*.csv
+reports/*.xlsx
+!reports/.gitkeep
