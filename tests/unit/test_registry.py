@@ -1,6 +1,6 @@
 from pathlib import Path
-import pytest
 
+import pytest
 from src.ingestion.registry import SourceRegistry, SourceRegistryError
 
 

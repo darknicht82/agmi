@@ -52,7 +52,9 @@ class SourceRegistry:
         return source
 
     def get_by_domain(self, domain: str) -> Source | None:
-        clean_domain = domain.lower().lstrip("www.")
+        clean_domain = domain.lower()
+        if clean_domain.startswith("www."):
+            clean_domain = clean_domain[4:]
         # Búsqueda exacta o coincidencia por sufijo de dominio
         for d, src in self._sources_by_domain.items():
             if d == clean_domain or clean_domain.endswith(f".{d}") or d.endswith(f".{clean_domain}"):
